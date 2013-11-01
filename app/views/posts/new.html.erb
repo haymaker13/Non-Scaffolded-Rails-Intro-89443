@@ -7,10 +7,24 @@ f is aware that  a Post has a:
 -->
 
 <%= form_for @post do |f| %>
+
+<% if @post.errors.any? %>
+  <p style="color:red;">All post require a title and content</p>
+<% end %>
+
 <div>
   <%= f.label :title%>
   <!--generated a html label element-->
   <br>
   <%= f.text_field :title %> <!--generate an input-->
+</div>
+<div>
+  <%= f.label :content%>
+  <!--generated a html label element-->
+  <br>
+  <%= f.text_area :content %> <!--generate an input-->
+</div>
+<div>
+  <%= f.submit "Submit new blog post"%>
 </div>
 <% end %>
