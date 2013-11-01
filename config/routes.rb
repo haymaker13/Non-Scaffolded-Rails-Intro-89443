@@ -1,5 +1,9 @@
 NonScaffoldedExample::Application.routes.draw do
   
+  get "posts/index"
+
+  get "posts/show"
+
   root :to => 'info#index'
   # The URL / loads the index action of the info controller.
   
@@ -11,6 +15,10 @@ NonScaffoldedExample::Application.routes.draw do
   
   match 'posts' => 'posts#index', :as => 'posts', :via => :get
   # The URL /posts maps to the index action of the posts controller.
+    
+  match 'posts/new' => 'posts#new', :as => 'new_post', :via => :get
+  
+  match 'posts' => 'posts#create', :as => 'create_post', :via => :post
   
   match 'posts/:id' => 'posts#show', :as => 'post', :via => :get
   
